@@ -1,6 +1,10 @@
 from django.urls import path, include
 from test_task import views
 from django.contrib.auth import views as aut
+from django.urls import path
+from api.views import ArticleView
+
+# app_name = "articles"
 
 urlpatterns = [
     path('registration/', views.RegisterForm.as_view(), name='registration'),
@@ -13,6 +17,8 @@ urlpatterns = [
     path('update_article/<int:pk>',
          views.UpdatelArticleView.as_view(), name='update_article'),
     path('delete_article/<int:pk>',
-         views.DeleteArticleView.as_view(), name='delete_article')
+         views.DeleteArticleView.as_view(), name='delete_article'),
+    path('api/articles/', ArticleView.as_view()),
+    path('api/articles/<int:pk>', ArticleView.as_view()),
 
 ]
