@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Удаление статьи</h1>
+<p>Вы точно хотите удалить статью с загаловком: {{artic.heading}}</p>
+<form method="POST">
+    {% csrf_token %}
+    <button>Да</button>
+    <button><a href="{% url 'index' %}" style="text-decoration: none; color:black">Нет</a></button>
+</form>
+
+{% endblock content %}

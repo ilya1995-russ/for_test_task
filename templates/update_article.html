@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Обновление статьи</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Обновить статью</button>
+</form>
+
+{% endblock content %}

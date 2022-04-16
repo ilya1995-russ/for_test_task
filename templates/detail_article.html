@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+<!-- and article.art_type == 'Закрытый' -->
+{% block content%}
+{% if user.is_authenticated %}
+<strong>{{article.heading}}</strong>
+<p>Тип Статьи: {{article.art_type}}</p>
+<p>{{article.description}}</p>
+<p>Имя и фамилия: {{article.author.first_name}} {{article.author.last_name}}</p>
+<p>Почта: {{article.author}}</p>
+{% if user.is_superuser or user.is_staff %}
+<a href="{% url 'update_article' article.pk %}">Изменить</a>
+<a href="{% url 'delete_article' article.pk %}">Удалить</a>
+{%endif%}
+{% else %}
+<p>Доступ к закрытым типам статьям доступны только подписчикам. Хотите войти как подписчик? </p>
+<button><a href="{% url 'login' %}" style="text-decoration: none; color:black">Да</a></button>
+<button><a href="{% url 'index' %}" style="text-decoration: none; color:black">Нет</a></button>
+{% endif %}
+{% endblock %}

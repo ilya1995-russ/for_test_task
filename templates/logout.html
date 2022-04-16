@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Выход</h1>
+<p>Вы хотите выйти из учетной записи?</p>
+<button><a href="{% url 'index' %}" style="text-decoration: none; color:black">Да</a></button>
+<button><a href="{% url 'index' %}" style="text-decoration: none; color:black">Нет</a></button>
+
+{% endblock content %}
